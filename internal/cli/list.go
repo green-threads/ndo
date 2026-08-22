@@ -6,6 +6,8 @@ import (
 	"sort"
 
 	"github.com/spf13/cobra"
+
+	"github.com/green-threads/ndo/internal/config"
 )
 
 func newListCmd(deps Deps) *cobra.Command {
@@ -48,12 +50,18 @@ func runList(deps Deps, stdout io.Writer, local, central bool) error {
 	}
 	sort.Strings(names)
 
+	settings, err := config.LoadSettings(deps.NDOHome)
+	if err != nil {
+		return err
+	}
+	styler := newStyler(stdout, settings)
+
 	for _, name := range names {
 		r := rf.Recipes[name]
 		if r.Description != "" {
-			fmt.Fprintf(stdout, "%s\t%s\t%s\n", name, r.Command, r.Description)
+			fmt.Fprintf(stdout, "%s\t%s\t%s\n", styler.BoldCyan(name), r.Command, styler.Dim(r.Description))
 		} else {
-			fmt.Fprintf(stdout, "%s\t%s\n", name, r.Command)
+			fmt.Fprintf(stdout, "%s\t%s\n", styler.BoldCyan(name), r.Command)
 		}
 	}
 	return nil

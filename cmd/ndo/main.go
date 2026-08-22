@@ -46,7 +46,7 @@ func run() int {
 		if errors.As(err, &exitErr) {
 			return exitErr.Code
 		}
-		fmt.Fprintln(os.Stderr, "ndo:", err)
+		cli.PrintError(deps, err)
 		return 1
 	}
 	return 0
