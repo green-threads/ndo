@@ -170,6 +170,12 @@ func runVarList(deps Deps, stdout io.Writer, group string, local, central bool) 
 	}
 	sort.Strings(groups)
 
+	settings, err := config.LoadSettings(deps.NDOHome)
+	if err != nil {
+		return err
+	}
+	styler := newStyler(stdout, settings)
+
 	for _, g := range groups {
 		keys := make([]string, 0, len(rf.Vars[g]))
 		for k := range rf.Vars[g] {
@@ -177,9 +183,9 @@ func runVarList(deps Deps, stdout io.Writer, group string, local, central bool) 
 		}
 		sort.Strings(keys)
 
-		fmt.Fprintf(stdout, "%s:\n", g)
+		fmt.Fprintf(stdout, "%s:\n", styler.BoldCyan(g))
 		for _, k := range keys {
-			fmt.Fprintf(stdout, "    %s: %s\n", k, rf.Vars[g][k])
+			fmt.Fprintf(stdout, "    %s: %s\n", k, styler.Dim(rf.Vars[g][k]))
 		}
 	}
 	return nil
