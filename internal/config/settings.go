@@ -14,12 +14,24 @@ import (
 type Settings struct {
 	Shell  string `toml:"shell,omitempty"`
 	Editor string `toml:"editor,omitempty"`
-	Color  bool   `toml:"color"`
+
+	// Color is a pointer so an absent `color` key (the common case — most
+	// users never write config.toml) is distinguishable from an explicit
+	// `color = false`: nil means "unset, default on", matching
+	// ColorEnabled below.
+	Color *bool `toml:"color,omitempty"`
 
 	// CompletionPromptAnswered records that the one-time "enable shell
 	// completion?" prompt has already been shown (regardless of the
 	// answer), so ndo never asks more than once per NDO_HOME.
 	CompletionPromptAnswered bool `toml:"completion_prompt_answered,omitempty"`
+}
+
+// ColorEnabled reports whether colored output is wanted per config.toml.
+// Color defaults on — an absent `color` key or missing config.toml both
+// mean enabled; only an explicit `color = false` turns it off.
+func (s Settings) ColorEnabled() bool {
+	return s.Color == nil || *s.Color
 }
 
 type settingsFile struct {
