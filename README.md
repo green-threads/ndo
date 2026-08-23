@@ -408,8 +408,7 @@ schema, CLI flag/command removal or renaming), `MINOR` on
 backwards-compatible feature additions, `PATCH` on backwards-compatible
 fixes. Release tags follow `vMAJOR.MINOR.PATCH` (e.g. `v1.2.3`), matching
 what the [release workflow](.github/workflows/release.yml) builds from.
-The project hasn't cut `v1.0.0` yet — see
-[`CHANGELOG.md`](CHANGELOG.md) for what's landed so far.
+See [`CHANGELOG.md`](CHANGELOG.md) for what's landed in each release.
 
 ## Design
 

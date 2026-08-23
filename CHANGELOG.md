@@ -7,8 +7,19 @@ and this project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-23
+
 ### Added
 
+- Colored output: `config.toml`'s `color` setting has existed since the
+  original schema but was never actually wired to anything. `ndo list`
+  and `ndo var list` now bold/cyan the recipe or group name and dim
+  descriptions/values, and top-level errors (`ndo: <err>`) print in red.
+  Color is on by default, auto-disabled for non-terminal output (pipes,
+  redirected files), and always disabled by `NO_COLOR`
+  (https://no-color.org) or an explicit `color = false`. Windows'
+  `cmd.exe`/older PowerShell consoles are supported via a VT100
+  console-mode shim (Windows Terminal already has this on).
 - A logo (`assets/logo-light.svg`, `assets/logo-dark.svg`, `assets/logomark.svg`), wired into the README header via a theme-aware `<picture>` element.
 
 ## [1.0.2] - 2026-08-22
