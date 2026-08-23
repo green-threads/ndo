@@ -10,6 +10,7 @@
 [![CI](https://github.com/green-threads/ndo/actions/workflows/ci.yml/badge.svg)](https://github.com/green-threads/ndo/actions/workflows/ci.yml)
 [![Go Reference](https://img.shields.io/badge/go-1.24-blue)](go.mod)
 [![License: MIT](https://img.shields.io/badge/license-MIT-informational)](LICENSE)
+[![Docs](https://img.shields.io/badge/docs-ndo.greenthreads.dev-1e6f5c)](https://ndo.greenthreads.dev)
 
 **ndo** is a CLI-first command runner: define short, named shell commands
 ("recipes") and run them by name, with arguments, from anywhere. It ships
@@ -362,6 +363,9 @@ color = true
 
 ## Docs
 
+- **[ndo.greenthreads.dev](https://ndo.greenthreads.dev)** — full docs
+  site: getting started, concepts, command reference, and versioned
+  releases.
 - [`docs/precedence.md`](docs/precedence.md) — how central and local
   recipes combine, and why the override is silent by design.
 - [`docs/recipe-format.md`](docs/recipe-format.md) — the full TOML schema
