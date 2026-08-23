@@ -1,8 +1,10 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
-    <img src="assets/logo-light.svg" alt="ndo" height="72">
-  </picture>
+  <a href="https://ndo.greenthreads.dev">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.svg">
+      <img src="assets/logo-light.svg" alt="ndo" height="72">
+    </picture>
+  </a>
 </p>
 
 # ndo
